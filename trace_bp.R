@@ -7,7 +7,7 @@ suppressMessages(library(stringr))
 
 # setwd("/home/andreaghelfi/projects/dblink_ddbj/dblink_ddbj_devel/trace")
 # from ddbj_mss_validation_sing
-directory <- "/home/andrea/scripts/tables"
+directory <- "/home/w3const/mssassist/tables"
 filename <- paste(directory, "bs_id.bp_id.csv", sep = "/") # table 1/3 (include two other methods to correlate bs_id with bp_id, using attribute)
 bs2bp <- fread(filename, header = TRUE, sep = "\t") # change variable bs2bp_via_attribute
 filename <- paste(directory, "bp2bs_via_locus_tag_prefix.csv", sep = "/") # table 2/3

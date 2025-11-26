@@ -3,8 +3,8 @@
 ###
 suppressMessages(library(data.table))
 suppressMessages(library(stringr))
-dir_trace <- "/home/andrea/projects/dblink_ddbj/dblink_ddbj_devel/trace"
-dir_tables <- "/home/andrea/scripts/tables"
+dir_trace <- "/home/w3const/dblink-ddbj/dblink_ddbj_devel/trace"
+dir_tables <- "/home/w3const/mssassist/tables"
 # table smp_id to drx
 filename <- "sra/drmdb.drx_status.csv"
 if (file.exists(filename)) {
