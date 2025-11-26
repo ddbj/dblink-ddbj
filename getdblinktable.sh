@@ -8,9 +8,7 @@
 # https://ddbj-dev.atlassian.net/browse/DB-1508).
 ############################################################################
 
-# dir="/home/andrea/projects/dblink_ddbj/dblink_ddbj_devel/"
-# scripts="/home/andrea/scripts/"
-BASE="/home/w3const/work-kosuge/dblink"
+BASE="/home/w3const/dblink-ddbj"
 # PG user for project,sample,dor,drm
 PG_USER1="const"
 # PG user for g-,e-,w-actual
