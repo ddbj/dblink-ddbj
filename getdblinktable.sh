@@ -16,6 +16,7 @@ PG_USER2="tkosuge"
 
 mkdir -p ${BASE}/dblink_ddbj_devel ${BASE}/dblink_ddbj_standby
 mkdir -p \
+${BASE}/tables \
 ${BASE}/dblink_ddbj_devel/gea \
 ${BASE}/dblink_ddbj_devel/trace \
 ${BASE}/dblink_ddbj_devel/trace/sra \
@@ -38,6 +39,7 @@ dir="${BASE}/dblink_ddbj_devel/"
 scripts=${BASE}/
 export PGPASSFILE=${BASE}/.pgpass
 
+# gea
 cd ${dir}gea
 rm -f test_gea.txt
 HOST="a011"
@@ -59,7 +61,7 @@ else
     log "File test_gea.txt do not exist."
 fi
 
-# trad
+# tsunami
 cd ${dir}tsunami
 rm -f test_at102.txt
 
@@ -241,7 +243,8 @@ if [[ ${len_test_at101} -eq 1 && ${len_test_at102} -eq 1 && ${len_test_at103} -e
 else
     log "Can't connect with TsunamiDB."
 fi
-#
+
+# trace
 cd ${dir}trace
 rm -rf test_trace.txt sra/
 mkdir -p sra/
@@ -300,3 +303,10 @@ if [ -f test_trace.txt ]; then
 else
     log "File test_trace.txt do not exist."
 fi
+# synchro
+cp -a ${BASE}/README_dblinkddbj.txt ${BASE}/dblink_ddbj_standby/
+TB=("${BASE}/dblink_ddbj_standby/gea" "${BASE}/dblink_ddbj_standby/trace" "${BASE}/dblink_ddbj_standby/tsunami")
+for v in ${TB[@]}; do
+rsync -a $v/*.csv ${BASE}/tables/
+done
+log "dblink_ddbj_standby were synchronized into tables/."
