@@ -308,7 +308,7 @@ cp -a ${BASE}/README_dblinkddbj.txt ${BASE}/dblink_ddbj_standby/
 TB=("${BASE}/dblink_ddbj_standby/gea" "${BASE}/dblink_ddbj_standby/trace" "${BASE}/dblink_ddbj_standby/tsunami")
 for i in ${TB[@]}; do
     for v in `ls ${i}/*.csv`; do
-    rsync -a ${i}/${v} ${BASE}/tables/
+    rsync -a ${v} ${BASE}/tables/
     done
 done
 log "dblink_ddbj_standby were synchronized into tables/."
