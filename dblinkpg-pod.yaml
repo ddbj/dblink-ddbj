@@ -24,8 +24,8 @@ spec:
         - mountPath: /run/secrets/dblink-pgpass
           name: pgpasswd
       securityContext:
-        runAsUser: 1000   # w3const UID
-        runAsGroup: 100  # w3const GID
+        runAsUser: 2233   # w3const UID
+        runAsGroup: 11370  # w3const GID
   volumes:
     - name: pgdat
       hostPath:
