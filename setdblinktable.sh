@@ -28,7 +28,7 @@ ${BASE}/dblink_ddbj_standby/tsunami
 
 # LOGFILE="/home/andrea/projects/dblink_ddbj/dblink_ddbj_devel/update_tables.log"
 LOGFILE="${BASE}/dblink_ddbj_devel/update_tables.log"
-
+[ $(wc -l < ${LOGFILE}) -gt 1000 ] && sed -i 1,20d ${LOGFILE}
 log() {
     echo "$(date +"%Y-%m-%d %H:%M:%S") - $1" >> "$LOGFILE" 2>&1
 }
