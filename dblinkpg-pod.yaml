@@ -26,9 +26,9 @@ spec:
   volumes:
     - name: pgdat
       hostPath:
-        path: /home/tkosuge/1127/pgdata
+        path: /home/w3const/dblink-ddbj/pgdata
         type: DirectoryOrCreate
     - name: pgpasswd
       hostPath:
-        path: /home/tkosuge/1127/.dblink-pgpass
+        path: /home/w3const/dblink-ddbj/.dblink-pgpass
         type: FileOrCreate
