@@ -30,5 +30,5 @@ spec:
         type: DirectoryOrCreate
     - name: pgpasswd
       hostPath:
-        path: /home/w3const/dblink-ddbj/.dblink-pgpass
+        path: /home/w3const/dblink-ddbj/dblink-pgpass
         type: FileOrCreate
