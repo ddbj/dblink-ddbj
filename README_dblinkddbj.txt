@@ -6,7 +6,6 @@
 
 directory structure
 /home/w3const/dblink-ddbj/dblink_ddbj_standby
-
 ./gea/gea_dblink.csv
 ./tsunami/bp_actual_taxon.csv
 ./tsunami/biosample_actual.csv
@@ -16,6 +15,8 @@ directory structure
 ./trace/dblink_trace_bs_table.csv
 ./trace/dblink_trace_bp_table.csv
 ./trace/dblink_trace_drr_table_status.csv
+
+The /home/w3const/dblink-ddbj/tables has the same .csv files shown above.
 
 ------------------
 gea	
