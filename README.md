@@ -1,3 +1,4 @@
 # dblink-ddbj
+This scripts creats the tables related to dblink such as BioProject, BioSample, DRR, and Accession number of DDBJ records.
 
-See https://ddbj-dev.atlassian.net/wiki/x/KADVkg
+See https://ddbj-dev.atlassian.net/wiki/x/KADVkg for installation.
