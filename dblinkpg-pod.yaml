@@ -16,22 +16,15 @@ spec:
           value: postgres
         - name: POSTGRES_DB
           value: dblink_db
-        - name: POSTGRES_PASSWORD_FILE
-          value: /run/secrets/dblink-pgpass
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretkeyRef:
+              name: pg-secret
+              key: POSTGRES_PASSWORD
       volumeMounts:
         - mountPath: /var/lib/postgresql/data
           name: pgdat
-        - mountPath: /run/secrets/dblink-pgpass
-          name: pgpasswd
-      securityContext:
-        runAsUser: 2233   # w3const UID
-        runAsGroup: 11370  # w3const GID
   volumes:
     - name: pgdat
-      hostPath:
-        path: /home/w3const/dblink-ddbj/pgdata
-        type: DirectoryOrCreate
-    - name: pgpasswd
-      hostPath:
-        path: /home/w3const/dblink-ddbj/dblink-pgpass
-        type: FileOrCreate
+      persistentVolumeClaim:
+        claimName: pgdata-dblink
