@@ -28,7 +28,7 @@ if [[ "$extracted_date" = "$current_date" ]]; then
     bioproject VARCHAR(20),
     PRIMARY KEY (id, gea)
   );"
-  psql -h ${host} -p ${port} -U ${user} -d ${db} -c "COPY gea_dblink(gea,status,bioproject)
+  psql -h ${host} -p ${port} -U ${user} -d ${db} -c "\copy gea_dblink(gea,status,bioproject)
   FROM '${BASE}/dblink_ddbj_standby/gea/gea_dblink.csv'
   DELIMITER ','; "
 else
@@ -50,7 +50,7 @@ if [[ "$extracted_date" = "$current_date" ]]; then
     count INTEGER,
     PRIMARY KEY (id_trad_bp, accession, bioproject)
   );"
-  psql -h ${host} -p ${port} -U ${user} -d ${db} -c "COPY trad_bioproject(db_name,accession,bioproject,taxon,status,accept_date,count)
+  psql -h ${host} -p ${port} -U ${user} -d ${db} -c "\copy trad_bioproject(db_name,accession,bioproject,taxon,status,accept_date,count)
   FROM '${BASE}/dblink_ddbj_standby/tsunami/bp_actual_taxon.csv'
   DELIMITER ',';"
   psql -h ${host} -p ${port} -U ${user} -d ${db} -c "UPDATE trad_bioproject SET status = 'private' WHERE status = '1001';"
@@ -73,7 +73,7 @@ if [[ "$extracted_date" = "$current_date" ]]; then
     biosample VARCHAR(20) NOT NULL,
     PRIMARY KEY (id, accession)
     ); "
-  psql -h ${host} -p ${port} -U ${user} -d ${db} -c "COPY trad_biosample(accession,biosample)
+  psql -h ${host} -p ${port} -U ${user} -d ${db} -c "\copy trad_biosample(accession,biosample)
   FROM '${BASE}/dblink_ddbj_standby/tsunami/biosample_actual.csv'
   DELIMITER ',';"
 else
@@ -91,7 +91,7 @@ if [[ "$extracted_date" = "$current_date" ]]; then
     drr VARCHAR(20) NOT NULL,
     PRIMARY KEY (id,accession)
     ); "
-  psql -h ${host} -p ${port} -U ${user} -d ${db} -c "COPY trad_sra(accession,drr)
+  psql -h ${host} -p ${port} -U ${user} -d ${db} -c "\copy trad_sra(accession,drr)
   FROM '${BASE}/dblink_ddbj_standby/tsunami/drr_actual.csv'
   DELIMITER ',';"
 else
@@ -114,7 +114,7 @@ if [[ "$extracted_date" = "$current_date" ]]; then
     bioproject VARCHAR(20),
     PRIMARY KEY (id, biosample)
     ); "
-  psql -h ${host} -p ${port} -U ${user} -d ${db} -c "COPY trace_biosample(biosample,submitter,submission,status,taxon,locus_tag,bioproject)
+  psql -h ${host} -p ${port} -U ${user} -d ${db} -c "\copy trace_biosample(biosample,submitter,submission,status,taxon,locus_tag,bioproject)
   FROM '${BASE}/dblink_ddbj_standby/trace/dblink_trace_bs_table.csv' (FORMAT csv, null 'NULL', DELIMITER ',') ;"
   psql -h ${host} -p ${port} -U ${user} -d ${db} -c "UPDATE trace_biosample SET status = 'submitted' WHERE status = '5100';"
   psql -h ${host} -p ${port} -U ${user} -d ${db} -c "UPDATE trace_biosample SET status = 'curating' WHERE status = '5200';"
@@ -142,7 +142,7 @@ if [[ "$extracted_date" = "$current_date" ]]; then
     bioproject VARCHAR(20),
     PRIMARY KEY (id, bioproject)
     ); "
-  psql -h ${host} -p ${port} -U ${user} -d ${db} -c "COPY trace_bioproject(submitter,submission,status,project_type,locus_tag,bioproject)
+  psql -h ${host} -p ${port} -U ${user} -d ${db} -c "\copy trace_bioproject(submitter,submission,status,project_type,locus_tag,bioproject)
   FROM '${BASE}/dblink_ddbj_standby/trace/dblink_trace_bp_table.csv' (FORMAT csv, null 'NULL', DELIMITER ',') ;"
   psql -h ${host} -p ${port} -U ${user} -d ${db} -c "UPDATE trace_bioproject SET status = 'submitted' WHERE status = '5100';"
   psql -h ${host} -p ${port} -U ${user} -d ${db} -c "UPDATE trace_bioproject SET status = 'curating' WHERE status = '5200';"
@@ -169,7 +169,7 @@ if [[ "$extracted_date" = "$current_date" ]]; then
     status VARCHAR(14),
     PRIMARY KEY (id, drr)
   ); "
-  psql -h ${host} -p ${port} -U ${user} -d ${db} -c "COPY trace_drr(drr,bioproject,biosample,submitter,status)
+  psql -h ${host} -p ${port} -U ${user} -d ${db} -c "\copy trace_drr(drr,bioproject,biosample,submitter,status)
   FROM '${BASE}/dblink_ddbj_standby/trace/dblink_trace_drr_table_status.csv'
   DELIMITER ',';"
   psql -h ${host} -p ${port} -U ${user} -d ${db} -c "UPDATE trace_drr SET status = 'error' WHERE status = '390';"
@@ -193,7 +193,7 @@ if [[ "$extracted_date" = "$current_date" ]]; then
     type VARCHAR(3) NOT NULL,
     PRIMARY KEY (id_sec_acc,accession)
     ); "
-  psql -h ${host} -p ${port} -U ${user} -d ${db} -c "COPY accession_type(accession,type)
+  psql -h ${host} -p ${port} -U ${user} -d ${db} -c "\copy accession_type(accession,type)
   FROM '${BASE}/dblink_ddbj_standby/tsunami/table_accession_type.csv'
   DELIMITER ',';"
 else
@@ -211,7 +211,7 @@ if [[ "$extracted_date" = "$current_date" ]]; then
     accession2 VARCHAR(20) NOT NULL,  
     PRIMARY KEY (id_pri2sec,accession,accession2)
     ); "
-  psql -h ${host} -p ${port} -U ${user} -d ${db} -c "COPY rel_pri2sec(accession,accession2)
+  psql -h ${host} -p ${port} -U ${user} -d ${db} -c "\copy rel_pri2sec(accession,accession2)
   FROM '${BASE}/dblink_ddbj_standby/tsunami/table_accession_current2obsolete.csv'
   DELIMITER ',';"
 else
