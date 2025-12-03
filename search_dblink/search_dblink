@@ -5,7 +5,7 @@
 
 BASE="/home/w3const/dblink-ddbj"
 echo "Searching on dblink_ddbj, please wait ..."
-db="dblink_ddbj_devel"
+db="dblink_db"
 host="a012"
 port="57023"
 user="postgres"
