@@ -13,7 +13,7 @@ db="dblink_db"
 user="postgres"
 port="57023"
 host="a012"
-export PGPASSWORD=$(cat /home/w3const/dblink-ddbj/search_dblink/pgpass-dblink)
+export PGPASSWORD=$(cat /home/w3const/dblink-ddbj/search_dblink/.pgpass-dblink)
 current_date=$(date +%Y-%m-%d)
 # db="dblink_ddbj_standby"
 # gea_dblink

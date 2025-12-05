@@ -2,6 +2,6 @@
 dblink_ddbj_devel/
 dblink_ddbj_standby/
 tables/
-search_dblink/pgpass-dblink
+search_dblink/.pgpass-dblink
 search_dblink/pg-secret.yaml
 search_dblink/log/
