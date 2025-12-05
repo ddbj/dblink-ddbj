@@ -4,4 +4,5 @@ dblink_ddbj_standby/
 tables/
 search_dblink/.pgpass-dblink
 search_dblink/pg-secret.yaml
+search_dblink/rbase-dblink.sif
 search_dblink/log/

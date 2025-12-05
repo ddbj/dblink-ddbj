@@ -4,6 +4,7 @@
 # This script was originally 'run_dblink_ddbj_v2.0.sh', then renamed to 'search_dblink'
 
 BASE="/home/w3const/dblink-ddbj"
+SIFIMG="${BASE}/search_dblink/rbase-dblink.sif"
 echo "Searching on dblink_ddbj, please wait ..."
 db="dblink_db"
 host="a012"
@@ -76,4 +77,6 @@ if test -f temp_dblink_ddbj/input_gea.txt; then
     psql -h ${host} -p ${port} -d ${db} -U ${user} -t -A -F"," -c "SELECT gea,gea.bioproject,tbs.biosample, gea.status AS gea_status, tbs.taxon AS trace_taxon, trbs.accession AS seq_accession, tbs.submitter AS trace_bs_submitter, tbs.status AS trace_bs_status, tbs.locus_tag AS bs_locus_tag, drr.drr AS trace_drr FROM gea_dblink gea FULL OUTER JOIN trace_biosample tbs ON(tbs.bioproject=gea.bioproject) FULL OUTER JOIN trace_drr drr ON(drr.bioproject=gea.bioproject) FULL OUTER JOIN trad_bioproject trbs ON(trbs.bioproject=gea.bioproject) WHERE gea.gea IN (${qgea}) ;" > temp_dblink_ddbj/gea2dblink.csv ;
   fi
 fi
-Rscript ${BASE}/search_dblink/run_dblink_ddbj_format_html_v1.1.R >temp_dblink_ddbj/run_dblink_ddbj.log 2> temp_dblink_ddbj/run_dblink_ddbj.err
+singularity exec --bind ${BASE}/search_dblink ${SIFIMG} \
+Rscript ${BASE}/search_dblink/run_dblink_ddbj_format_html_v1.1.R \
+>temp_dblink_ddbj/run_dblink_ddbj.log 2> temp_dblink_ddbj/run_dblink_ddbj.err
