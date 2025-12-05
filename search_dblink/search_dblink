@@ -10,7 +10,7 @@ host="a012"
 port="57023"
 user="postgres"
 # db="dblink_ddbj_standby"
-export PGPASSWORD=$(cat ${BASE}/search_dblink/pgpass-dblink)
+export PGPASSWORD=$(cat ${BASE}/search_dblink/.pgpass-dblink)
 
 rm -rf out_dblink_ddbj/ temp_dblink_ddbj/
 mkdir -p temp_dblink_ddbj
